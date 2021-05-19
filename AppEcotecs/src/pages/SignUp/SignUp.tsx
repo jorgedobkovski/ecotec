@@ -50,8 +50,8 @@ export default function SignUp(){
 
                     <Text style={styles.titulo}>Cadastre-se</Text>
                     
-                    <Input  title='Nome' />
-                    <Input  title='Sobrenome' />
+                    <Input icon="mail" title='Nome' />
+                    <Input icon="mail" title='Sobrenome' />
                      {/*<Input title='Telefone' />
                     <Input title='E-mail' />
                     <Input title='Senha'  secureTextEntry={true} />

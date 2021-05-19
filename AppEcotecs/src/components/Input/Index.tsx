@@ -8,6 +8,7 @@ interface InputProps extends TextInputProps{
 
 export default function Input({title,icon,...rest}:InputProps){
     const [isFocused, setIsFocused] = useState(false);
+
      const handleInputFocus = useCallback(() => {
         setIsFocused(true);
         console.log("mudou focus ",isFocused)
@@ -17,6 +18,7 @@ export default function Input({title,icon,...rest}:InputProps){
         setIsFocused(false);
         console.log("mudou Blur ",isFocused)
     }, []);
+    
     return (
         <View 
             style={
@@ -37,7 +39,6 @@ export default function Input({title,icon,...rest}:InputProps){
                 onBlur={handleInputBlur}
                 style={[ styles.input]} 
                 value={()=>{}} {...rest}/>
-
         </ View>
     )
 }
@@ -47,9 +48,9 @@ const styles = StyleSheet.create({
         height: 60,
         paddingHorizontal: 16,
         backgroundColor: '#fff',
-        borderRadius: 10,
         marginTop: 8,
         borderWidth: 2,
+        borderRadius: 10,
         borderColor: '#232129',
         flexDirection: 'row',
         alignItems: 'center',

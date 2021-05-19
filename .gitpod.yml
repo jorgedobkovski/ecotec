@@ -8,3 +8,4 @@ vscode:
     - anseki.vscode-color@0.4.5:e8bdc484a2451ee8b303bc2a673ebffa
     - dracula-theme.theme-dracula@2.22.3:736ab1bad936c53fd45bc2fdfbd6d6da
     - ritwickdey.liveserver@5.6.1:e4c865d51815543708ca6d7adf1f2bfb
+    - dbaeumer.vscode-eslint@2.1.8:d3668785b2744386867631d79537552a

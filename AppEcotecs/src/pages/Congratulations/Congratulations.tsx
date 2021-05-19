@@ -34,18 +34,18 @@ const style = StyleSheet.create({
         fontSize:23,
         fontWeight:'bold',
         textAlign:'center',
-        marginBottom:95
+        marginBottom:'50%'
     },
     ButtonMenu:{
-        paddingVertical:5,
-        paddingHorizontal:10,
         backgroundColor:'#FFC93C',
+        marginBottom:'5%',
         fontWeight:'bold',
         height:37,
         width:150,
         borderRadius:5,
         alignItems:'center',
         justifyContent:'center',
-        marginBottom:'5%'
+        paddingHorizontal:10,
+        paddingVertical:5
     },
 }) 
