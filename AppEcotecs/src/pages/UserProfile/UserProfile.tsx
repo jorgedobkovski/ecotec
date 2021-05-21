@@ -13,26 +13,26 @@ import {
     SectionList,
     Platform
 } from 'react-native';
-import Header from "../../components/Header/Index";
-
 
 import Artesanato from '../../images/artesanato.png';
 import Eletronico from '../../images/eletronicos.png';
 import Organico from '../../images/organicos.png';
 
 import {Feather,Entypo} from '@expo/vector-icons';
-import Input from '../../components/Input/Index'
 import fonts from '../../config/font';
 
 const DataServicos = [
-    {
-      id: "1",
-      img:'https://static1.casapraticaqualita.com.br/articles/7/69/7/@/736-voce-pode-fazer-vasos-de-plantas-customi-article_content_img-3.jpg',
-      title: "Vaso de planta com garrafa",
-      categoria:'Artesanato',
-      provider:'Diego Fernandes',
-      preco:"R$ 50,00",
-    },
+  {
+    id: "1",
+    img:'https://static1.casapraticaqualita.com.br/articles/7/69/7/@/736-voce-pode-fazer-vasos-de-plantas-customi-article_content_img-3.jpg',
+    title: "Vaso de planta com garrafa",
+    description: "Vaso de plantas para deixar sua varanda um ambiente mais aconchegante...",
+    materials: ["Tábua de madeira de 2m", "5 garrafas de vidro de tamanhos variados", "barbante"],
+    categoria:'Artesanato',
+    provider:'Diego Fernandes',
+    providerImg:'https://blog.rocketseat.com.br/content/images/2019/05/profile.png',
+    preco:"R$ 50,00",
+  },
     {
       id: "2",
       img:"https://http2.mlstatic.com/D_NQ_NP_638715-MLB25309690941_012017-O.jpg",
@@ -97,12 +97,13 @@ const DataServicos = [
       title:string,
       categoria:string,
       provider:string,
+      providerImg:string,
       preco:string,
   }
 
  const { height: viewportHeight } = Dimensions.get('window');
 
-export default function PerfilUser(){
+export default function UserProfile(){
     
     const [selectedId, setSelectedId] = useState(null);
     const _renderItem= ({item}:any) => {
@@ -122,10 +123,18 @@ export default function PerfilUser(){
     return(
         <SafeAreaView style={styles.container}>            
             
-            <Header />
-            
+            <View style={styles.profileHeader}>
+              <View style={styles.iconsHeader}>
+                <Entypo name="home" style={styles.icon} />
+                <Entypo name="forward" style={styles.icon} />                
+              </View>              
+              <Image style={styles.profilePhoto} source={{uri:'https://blog.rocketseat.com.br/content/images/2019/05/profile.png'}}/>
+              <Text style={styles.profileName}>Diego Fernandes</Text>
+              <Text style={styles.profileEmail}>diego@fernandes.com</Text>
+              <Text style={styles.profileText}>Sou licenciado em Biologia pela Faculdade de Ciências de Lisboa desde 1998, tendo feito a sua tese final sobre a ecologia de carnívoros na Serra de Grândola. Trabalho com reciclagem e artesanato para trazer uma renda extra para casa.</Text>
+            </View>     
                              
-            <Text style={styles.title}>Serviços</Text> 
+            <Text style={styles.title}>Serviços oferecidos</Text> 
             
                 <FlatList
                     style={{height:Dimensions.get('screen').height}}
@@ -133,8 +142,7 @@ export default function PerfilUser(){
                     data={DataServicos}
                     keyExtractor={servicos => servicos.id}
                     renderItem={_renderItem}
-                />
-            
+                />            
                 
         </SafeAreaView>
     );
@@ -190,7 +198,47 @@ const styles = StyleSheet.create({
       },
       iconButton:{
         marginBottom:5,
-      }
+      },
+      profileHeader:{
+        backgroundColor: '#206A5D',
+        alignItems:'center',
+        width: Dimensions.get('window').width,
+        paddingTop:20, 
+        paddingBottom:30,
+        paddingHorizontal: 15,
+      },
+      profilePhoto:{
+        height:100,
+        width:100,
+        borderRadius:100,
+        marginBottom:10,
+      },
+      profileName:{
+        color:'white',
+        fontWeight:'bold',
+      },
+      profileEmail:{
+        color:'white',
+        marginBottom:20,
+        textAlign:'justify',
+      },
+      profileText:{
+        color:'white',
+        textAlign:'justify',
+      },
+      iconsHeader:{
+        width: Dimensions.get('window').width,
+        justifyContent: 'space-between',
+        flexDirection:'row',
+      },
+      icon:{
+        color:'white',
+        fontSize:25,
+        paddingHorizontal:20,
+        transform: [
+            {rotateY:"180deg"}
+        ]
+      },
 });
 
 
