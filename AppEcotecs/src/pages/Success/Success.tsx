@@ -2,14 +2,14 @@ import React from 'react';
 import {View,Text, Image, StyleSheet, Dimensions, SafeAreaView,TextInput, TouchableOpacity} from 'react-native';
 import Sucesso from '../../images/sucesso.png';
 
-export default function Sucess(){
+export default function Sucess({navigation}:any){
     return (
         <SafeAreaView style={styles.container} >
             <Image source={Sucesso} style={styles.image} resizeMode="contain" />
 
             <Text style={styles.mensagem}>Parabéns! {'\n'} Voce foi cadastrado com sucesso </Text>    
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate("LogIn")}}>
                 <Text style={styles.textButton}>
                     Login
                 </Text>        

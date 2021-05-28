@@ -14,7 +14,7 @@ import * as ImagePicker from 'expo-image-picker';
 
 import Input from '../../components/Input/Index';
 
-export default function SignUp(){
+export default function SignUp({navigation}:any){
     const [image, setImage] = useState("");
     
 
@@ -65,12 +65,12 @@ export default function SignUp(){
                         {image !== "" && <Image source={{ uri: image }} style={{ width: 200, height: 200 }}/>}
                     </View>
 
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate("Success")}}>
                         <Text style={styles.textButton}>
                             Cadastrar
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={()=>{navigation.goBack()}}>
                         <Text style={styles.textButton}>
                             Voltar
                         </Text>

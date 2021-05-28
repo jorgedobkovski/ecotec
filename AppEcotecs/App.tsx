@@ -12,6 +12,7 @@ import ResetPassword from './src/pages/ResetPassword/ResetPassword';
 import Congratulations from './src/pages/Congratulations/Congratulations';
 import UserProfile from './src/pages/UserProfile/UserProfile'; 
 import ServicePage from './src/pages/ServicePage/ServicePage';
+
 import {useFonts,Poppins_600SemiBold,Poppins_100Thin_Italic,Poppins_400Regular} from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 import Mailsent from './src/pages/Mailsent/Mailsent';
@@ -32,7 +33,7 @@ export default function App() {
             <StatusBar barStyle="light-content" />
             <Stack.Navigator  
                 initialRouteName="LogIn"
-                 screenOptions={{headerShown: false,cardStyle: { backgroundColor: '#F0F0F5' },}}
+                screenOptions={{headerShown: false,cardStyle: { backgroundColor: '#F0F0F5' },}}
                 >
                 <Stack.Screen name="LogIn" component={LogIn} />
                 <Stack.Screen name="SignUp" component={SignUp} />
@@ -41,7 +42,7 @@ export default function App() {
                 <Stack.Screen name="Congratulations" component={Congratulations} />
                 <Stack.Screen name="ServiceCatalog" component={ServiceCatalog} />
                 <Stack.Screen name="ServicePage" component={ServicePage} />
-
+                <Stack.Screen name="UserProfile" component={UserProfile} />
             </Stack.Navigator>
         </NavigationContainer>
     );

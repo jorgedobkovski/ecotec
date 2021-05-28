@@ -36,7 +36,7 @@ export default function ServicePage({navigation}:any){
 return( 
     <SafeAreaView  style={styles.container}>
        
-            <Header name="ServiceCatalog" />      
+            <Header />      
             
             <View style={styles.card}>
                 <Image style={styles.image} source={{uri:DataServicos.img}}></Image>
@@ -46,7 +46,7 @@ return(
                     <Text style={styles.subtitle}>Materiais Necessários</Text>
                     <Text style={styles.contentText}>{DataServicos.materials.join(', \n')}.</Text>
 
-                    <TouchableOpacity style={styles.providerView}>
+                    <TouchableOpacity style={styles.providerView} onPress={()=>{navigation.navigate("UserProfile")}}>
                         <Image style={styles.profileImg} source={{uri:DataServicos.providerImg}}></Image>
                         <View>
                             <Text style={styles.subtitle}>{DataServicos.provider}</Text>
