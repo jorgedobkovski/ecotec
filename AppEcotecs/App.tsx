@@ -1,4 +1,6 @@
 // import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
+
 import React from 'react';
 import { StyleSheet, Text, View,StatusBar } from 'react-native';
 
@@ -14,18 +16,41 @@ import {useFonts,Poppins_600SemiBold,Poppins_100Thin_Italic,Poppins_400Regular} 
 import AppLoading from 'expo-app-loading';
 import Mailsent from './src/pages/Mailsent/Mailsent';
 
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 export default function App() {
   const [fontsLoaded] = useFonts({Poppins_600SemiBold,Poppins_100Thin_Italic,Poppins_400Regular})
 
   if(!fontsLoaded)
     return <AppLoading />
 
-  return (
-      <>
-        <StatusBar barStyle="light-content" />
-        <UserProfile />
-      </>
-  );
+    return (
+        <NavigationContainer>
+            <StatusBar barStyle="light-content" />
+            <Stack.Navigator  
+                initialRouteName="LogIn"
+                 screenOptions={{headerShown: false,cardStyle: { backgroundColor: '#F0F0F5' },}}
+                >
+                <Stack.Screen name="LogIn" component={LogIn} />
+                <Stack.Screen name="SignUp" component={SignUp} />
+                <Stack.Screen name="Success" component={Success} />
+                <Stack.Screen name="ResetPassword" component={ResetPassword} />
+                <Stack.Screen name="Congratulations" component={Congratulations} />
+                <Stack.Screen name="ServiceCatalog" component={ServiceCatalog} />
+                <Stack.Screen name="ServicePage" component={ServicePage} />
+
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+//   return (
+//       <>
+//         <StatusBar barStyle="light-content" />
+//         <ServiceCatalog navigation="ServicePage" />
+//       </>
+//   );
 
 }
 

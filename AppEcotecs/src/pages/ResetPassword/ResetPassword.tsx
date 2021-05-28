@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, Text,View,TextInput,TouchableOpacity, StyleSheet} from 'react-native';
 import EsqueceuSenha from '../../images/esqueceusenha.png';
 
-export default function ResetPassword(){
+export default function ResetPassword({navigation}:any){
     return (
         <View style={style.container}>
             <Image source={EsqueceuSenha} />
@@ -21,7 +21,7 @@ export default function ResetPassword(){
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={style.buttonCancel}>
+            <TouchableOpacity style={style.buttonCancel} onPress={()=>{navigation.goBack()}}>
                 <Text>
                     Cancelar
                 </Text>

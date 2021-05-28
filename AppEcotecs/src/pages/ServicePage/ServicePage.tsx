@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React,{useState} from 'react';
 import {
     View,
@@ -30,12 +31,12 @@ const DataServicos =
       preco:"R$ 50,00",
     }
 
-export default function ServicePage(){
+export default function ServicePage({navigation}:any){
     
 return( 
     <SafeAreaView  style={styles.container}>
        
-            <Header/>      
+            <Header name="ServiceCatalog" />      
             
             <View style={styles.card}>
                 <Image style={styles.image} source={{uri:DataServicos.img}}></Image>
@@ -58,7 +59,7 @@ return(
                         <Text style={styles.contentText}>Valor do serviço</Text>
                         <Text style={styles.prizeText}>{DataServicos.preco}</Text>
                     </View>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={()=>{navigation.goBack()}}>
                         <Image source={whatsapp}/>
                         <Text style={styles.buttonText}>Entrar em contato</Text>                                                
                     </TouchableOpacity>                

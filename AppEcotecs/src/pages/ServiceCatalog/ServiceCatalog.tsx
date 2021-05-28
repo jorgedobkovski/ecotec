@@ -1,4 +1,5 @@
 import React,{useState, useCallback} from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
     View,
     Text,
@@ -36,7 +37,7 @@ interface statusCatalog {
     status?: string | null
 }
 
-export default function ServiceCatalog(){
+export default function ServiceCatalog( { navigation }:any){
     
     const [onPressCatalog, setOnPressCatalog] = useState(false);
     const [selectedCatalog, setSelectedCatalog] = useState<string | null>(null);
@@ -82,7 +83,7 @@ export default function ServiceCatalog(){
             <TouchableOpacity  
                 style={[stylesFlatlistServicos.button]} 
                 onPress={()=>{
-                    //handleButton(item.id)
+                  navigation.navigate('ServicePage')
                 }}
                 >
                 <Image source={{uri:item.img}} style={stylesFlatlistServicos.iconButton} />

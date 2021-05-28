@@ -15,7 +15,8 @@ import LogoI from '../../images/logoI.png';
 import Input from '../../components/Input/Index';
 import {styles} from './Styles';
 
-export default function LogIn(){
+export default function LogIn({navigation}:any){
+    const logado = true;
     return ( 
         <SafeAreaView style={styles.container} >
             <KeyboardAvoidingView
@@ -37,16 +38,16 @@ export default function LogIn(){
                             <Input icon="mail" title='E-mail' keyboardType="email-address" />
                             <Input icon="lock" title='Senha'  secureTextEntry={true} />
 
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity onPress={()=>{navigation.navigate("ServiceCatalog")}} style={styles.button}>
                                 <Text style={styles.textButton}>
                                     Entrar
                                 </Text>
                             </TouchableOpacity>
                         </View>
-                        <TouchableOpacity style={styles.link}>
+                        <TouchableOpacity onPress={()=>{ navigation.navigate("SignUp")}} style={styles.link}>
                             <Text style={styles.forgotPasswordText}>Cadastre-se</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.link}>
+                        <TouchableOpacity onPress={()=>{navigation.navigate("ResetPassword")}} style={styles.link}>
                             <Text style={styles.forgotPasswordText}>Esqueceu sua senha?</Text>
                         </TouchableOpacity>
                         {/* <Text style={styles.link}>Esqueceu sua senha?</Text> */}

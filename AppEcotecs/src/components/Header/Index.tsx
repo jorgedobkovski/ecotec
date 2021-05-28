@@ -1,14 +1,20 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import {View,Image, StyleSheet,Dimensions} from 'react-native';
+import {View,Image, StyleSheet,Dimensions, TouchableOpacity} from 'react-native';
 import {Entypo} from '@expo/vector-icons';
 import EcoTecTexto from '../../images/EcoTecTexto.png';
 
 
-export default function Header(){
+export default function Header( { navigation }:any ){
+     const { navi }:any = useNavigation();
     return (
         <View style={styles.header}>
             <Image source={EcoTecTexto} style={styles.image} resizeMode="contain"></Image>
-            <Entypo name="forward" style={styles.icon} />
+            <TouchableOpacity onPress={()=>{
+                  navigation.goBack()
+                }}>
+                <Entypo name="forward" style={styles.icon} />
+            </TouchableOpacity>
         </View>
     )
 }
