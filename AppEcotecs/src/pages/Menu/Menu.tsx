@@ -17,6 +17,24 @@ function Menu(){
         </SafeAreaView>
     )
 }
+function Button(){
+    return(
+        <View>
+            <TouchableOpacity style={stylus.buttonServices}>
+                <Feather name = {"search"} style = {stylus.buttonServices}/>
+                <Text style={{color:'white'}}>
+                    Encontrar serviços
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={stylus.buttonMyServices}>
+                <Feather name = {"plus-circle"} style = {stylus.buttonMyServices}/>
+                <Text style={{color:'white'}}>
+                    Meus serviços
+                </Text>
+            </TouchableOpacity>
+        </View>
+    )
+}
 const styles = StyleSheet.create({
     header:{
         backgroundColor:'#206A5D',
@@ -37,6 +55,28 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         paddingHorizontal: 5,
         height: 83
+    }
+})
+const stylus = StyleSheet.create({
+    buttonServices:{
+        backgroundColor:'#206A5D',
+        fontSize:18,
+        height:61,
+        width:256,
+        borderRadius:5,
+        alignItems:'center',
+        justifyContent:'center',
+        marginBottom:'5%'
+    },
+    buttonMyServices:{
+        backgroundColor:'#206A5D',
+        fontSize:18,
+        height:61,
+        width:256,
+        borderRadius:5,
+        alignItems:'center',
+        justifyContent:'center',
+        marginBottom:'5%'
     }
 });
 export default Menu;
