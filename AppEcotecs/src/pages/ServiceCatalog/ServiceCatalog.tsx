@@ -21,6 +21,8 @@ import {Feather,Entypo} from '@expo/vector-icons';
 import Input from '../../components/Input/Index'
 import fonts from '../../config/font';
 
+import {styles,stylesFlatlistServicos,stylesInputSearch} from './Style';
+
 
 interface teste {
     id:number,
@@ -100,13 +102,20 @@ export default function ServiceCatalog( { navigation }:any){
     return(
         <SafeAreaView style={styles.container}>            
             
-            <Header />
-            <TextInput style={styles.searchBar} placeholder="Qual serviço você procura?">                
-            </TextInput>
+            <Header navigation={navigation} />
+            <View style={stylesInputSearch.container}>
+                 <Feather 
+                    name="search"
+                    size={20}
+                    style={stylesInputSearch.icon} />
+                <TextInput  placeholder="Qual serviço você procura?"/>   
+            </View>
+
+            
             
                 <Text style={styles.title}>Categorias</Text> 
                 <FlatList
-                    style={{height:300}}
+                    style={{height:400}}
                     horizontal
                     data={Data}
                     showsHorizontalScrollIndicator={false}
@@ -128,104 +137,3 @@ export default function ServiceCatalog( { navigation }:any){
         </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:'center',
-        paddingHorizontal:10,
-        marginBottom:0
-    },
-    
-    searchBar:{
-        backgroundColor: '#F0F0F5',
-        width: Dimensions.get('window').width * 0.9,
-        height: 57,
-        borderRadius: 8,
-        marginTop:-30,
-        paddingHorizontal:20,
-    },
-    passwordContainer: {
-        flexDirection: 'row',
-        borderBottomWidth: 1,
-        borderColor: '#000',
-        paddingBottom: 10,
-      },
-      inputStyle: {
-        flex: 1,
-      },
-      title:{
-          width: Dimensions.get('screen').width,
-          paddingHorizontal:15,
-          fontFamily:'Poppins_600SemiBold',
-          fontSize:20,
-          marginVertical:10,
-          textAlign:'justify'
-      },
-      button:{
-          flex:1,
-          alignItems:'center',
-          justifyContent:'space-around',
-          width:120,
-          height:128,
-          backgroundColor:'#F0F0F5',
-          borderRadius:8,
-          marginRight: 10,
-          padding: 20,
-          borderColor: '#10b04b',
-          
-      },
-      buttonSelected:{
-        borderColor: '#10b04b',
-        borderWidth: 1,
-      },
-      textoButton:{
-        fontSize:15,
-        color:'black'
-      },
-      iconButton:{
-        marginBottom:5,
-      }
-});
-
-
-const stylesFlatlistServicos = StyleSheet.create({
-    button:{
-        flex:1,
-        alignItems:'center',
-        width:'100%',
-        height:114,
-        backgroundColor:'#F0F0F5',
-        borderRadius:8,
-        marginRight: 10,
-        marginBottom: 10,
-        flexDirection:'row'
-    },
-    iconButton:{
-        width:'35%',
-        height:'100%',
-        borderRadius:8,
-        marginRight:17
-    },
-    titleButton:{
-      fontSize:15,
-      fontWeight:'bold'
-    },
-    descriptionButton:{
-        fontSize:10,
-        color:'#3D3D4D',
-        fontWeight:'bold'
-    },
-    providerButton:{
-        fontSize:10,
-        color:'#3D3D4D',
-    },
-    textPrice:{
-        marginTop:8,
-        fontSize:18,
-        color:'#39B100',
-    },
-    contentContainer: {
-        height:Dimensions.get('screen').height
-      }
-});

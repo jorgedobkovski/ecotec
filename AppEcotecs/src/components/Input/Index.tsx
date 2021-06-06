@@ -1,12 +1,14 @@
 import React,{useState,useCallback} from 'react';
 import {TextInput, TextInputProps, Text, StyleSheet,View} from 'react-native';
 import {Feather, Entypo} from '@expo/vector-icons';
+
 interface InputProps extends TextInputProps{
-    title: string;
+    title?: string;
     icon:string;
+    placeholder?: string;
 }
 
-export default function Input({title,icon,...rest}:InputProps){
+export default function Input({title,icon,placeholder,...rest}:InputProps){
     const [isFocused, setIsFocused] = useState(false);
 
      const handleInputFocus = useCallback(() => {
@@ -38,6 +40,7 @@ export default function Input({title,icon,...rest}:InputProps){
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
                 style={[ styles.input]} 
+                placeholder={placeholder}
                 value={()=>{}} {...rest}/>
         </ View>
     )

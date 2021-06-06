@@ -20,6 +20,7 @@ import Mailsent from './src/pages/Mailsent/Mailsent';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import CreateService from './src/pages/CreateServices/CreateService';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -33,7 +34,7 @@ export default function App() {
             <StatusBar barStyle="light-content" />
             <Stack.Navigator  
                 initialRouteName="LogIn"
-                screenOptions={{headerShown: false,cardStyle: { backgroundColor: '#F0F0F5' },}}
+                screenOptions={{headerShown: false,cardStyle: { backgroundColor: '#FFF' },}}
                 >
                 <Stack.Screen name="LogIn" component={LogIn} />
                 <Stack.Screen name="SignUp" component={SignUp} />
@@ -43,6 +44,7 @@ export default function App() {
                 <Stack.Screen name="ServiceCatalog" component={ServiceCatalog} />
                 <Stack.Screen name="ServicePage" component={ServicePage} />
                 <Stack.Screen name="UserProfile" component={UserProfile} />
+                <Stack.Screen name="CreateService" component={CreateService} />
             </Stack.Navigator>
         </NavigationContainer>
     );

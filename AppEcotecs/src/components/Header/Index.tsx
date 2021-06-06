@@ -11,7 +11,7 @@ export default function Header( { navigation }:any ){
         <View style={styles.header}>
             <Image source={EcoTecTexto} style={styles.image} resizeMode="contain"></Image>
             <TouchableOpacity onPress={()=>{
-                  navigation.goBack()
+                  navigation.goBack();
                 }}>
                 <Entypo name="forward" style={styles.icon} />
             </TouchableOpacity>

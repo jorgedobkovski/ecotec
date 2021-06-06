@@ -14,7 +14,7 @@ import * as ImagePicker from 'expo-image-picker';
 
 import Input from '../../components/Input/Index';
 
-export default function SignUp({navigation}:any){
+export default function CreateService({navigation}:any){
     const [image, setImage] = useState("");
     
 
@@ -48,7 +48,7 @@ export default function SignUp({navigation}:any){
             <ScrollView>
                 <View style={styles.card}>
 
-                    <Text style={styles.titulo}>Cadastre-se</Text>
+                    <Text style={styles.titulo}>Cadastro {'\n'} seu serviço</Text>
                     
                     <Input placeholder="Nome" icon="mail" title='Nome' />
                     <Input placeholder="Email" icon="mail" title='Email' />
@@ -97,8 +97,6 @@ const styles = StyleSheet.create({
     card:{
         alignItems:'center',
         marginTop:0,
-        // backgroundColor:'#206A5D',
-        // height: Dimensions.get('window').height * 1,
         height: 'auto',
         width: 321,
         borderRadius:13

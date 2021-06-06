@@ -12,7 +12,8 @@ import {
     FlatList,
     ScrollView,
     SectionList,
-    Platform
+    Platform,
+    Linking
 } from 'react-native';
 import whatsapp from "../../images/whatsapp.png";
 import Header from "../../components/Header/Index";
@@ -36,7 +37,7 @@ export default function ServicePage({navigation}:any){
 return( 
     <SafeAreaView  style={styles.container}>
        
-            <Header />      
+            <Header navigation={navigation} />      
             
             <View style={styles.card}>
                 <Image style={styles.image} source={{uri:DataServicos.img}}></Image>
@@ -59,7 +60,7 @@ return(
                         <Text style={styles.contentText}>Valor do serviço</Text>
                         <Text style={styles.prizeText}>{DataServicos.preco}</Text>
                     </View>
-                    <TouchableOpacity style={styles.button} onPress={()=>{navigation.goBack()}}>
+                    <TouchableOpacity style={styles.button} onPress={()=>{Linking.openURL(`https://api.whatsapp.com/send?phone=5569993176455&text=Olá,%20meu%20amigo!`)}}>
                         <Image source={whatsapp}/>
                         <Text style={styles.buttonText}>Entrar em contato</Text>                                                
                     </TouchableOpacity>                

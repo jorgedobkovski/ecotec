@@ -11,7 +11,7 @@ export default function Sucess({navigation}:any){
 
             <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate("LogIn")}}>
                 <Text style={styles.textButton}>
-                    Login
+                    LogIn
                 </Text>        
             </TouchableOpacity>   
 
@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'space-around',
         paddingHorizontal:10,
-        marginBottom:0
+        marginBottom:0,
+        backgroundColor:'white'
     },
     image: {
         height: Dimensions.get('window').width * 0.8,
@@ -40,10 +41,12 @@ const styles = StyleSheet.create({
     },
     button:{
         backgroundColor: '#206A5D',
-        width: '50%',
-        height:37,
+        width: '90%',
+        height:50,
         alignItems:'center',
-        borderRadius:5
+        borderRadius:5,
+        justifyContent:'center',
+        alignContent:'center'
     },
     textButton:{
         fontSize:20,
