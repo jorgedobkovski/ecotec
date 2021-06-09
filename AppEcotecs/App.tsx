@@ -21,6 +21,7 @@ import Mailsent from './src/pages/Mailsent/Mailsent';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CreateService from './src/pages/CreateServices/CreateService';
+import Menu from './src/pages/Menu/Menu';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -44,6 +45,7 @@ export default function App() {
                 <Stack.Screen name="ServiceCatalog" component={ServiceCatalog} />
                 <Stack.Screen name="ServicePage" component={ServicePage} />
                 <Stack.Screen name="UserProfile" component={UserProfile} />
+                <Stack.Screen name="Menu" component={Menu} />
                 <Stack.Screen name="CreateService" component={CreateService} />
             </Stack.Navigator>
         </NavigationContainer>
