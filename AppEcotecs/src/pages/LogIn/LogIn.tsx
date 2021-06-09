@@ -38,7 +38,7 @@ export default function LogIn({navigation}:any){
                             <Input icon="mail" title='E-mail' keyboardType="email-address" />
                             <Input icon="lock" title='Senha'  secureTextEntry={true} />
 
-                            <TouchableOpacity onPress={()=>{console.log(navigation); navigation.navigate("ServiceCatalog")}} style={styles.button}>
+                            <TouchableOpacity onPress={()=>{console.log(navigation); navigation.navigate("Menu")}} style={styles.button}>
                                 <Text style={styles.textButton}>
                                     Entrar
                                 </Text>
