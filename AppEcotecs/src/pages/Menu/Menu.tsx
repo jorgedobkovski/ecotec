@@ -29,7 +29,7 @@ function ButtonService({navigation}:any){
                     Encontrar serviços
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={stylus.buttonServices}>
+            <TouchableOpacity style={stylus.buttonServices} onPress={()=>{navigation.navigate("MyProfile")}}> 
                 <Feather name = {"plus-circle"} style = {stylus.icons}/>
                 <Text style={[{color:'white'}, stylus.text]}>
                     Meus serviços
