@@ -20,6 +20,7 @@ import Organico from '../../images/organicos.png';
 
 import {Feather,Entypo} from '@expo/vector-icons';
 import fonts from '../../config/font';
+import { stylesFlatlistServicos } from '../ServiceCatalog/Style';
 
 const DataServicos = [
   {
@@ -108,14 +109,20 @@ export default function MyProfile({ navigation }:any){
     const [selectedId, setSelectedId] = useState(null);
     const _renderItem= ({item}:any) => {
         return (
-            <TouchableOpacity  style={stylesFlatlistServicos.buttonTest} onPress={() => {}}>
+            <TouchableOpacity  style={stylesFlatlistServicos.button} onPress={() => {}}>
                 <Image source={{uri:item.img}} style={stylesFlatlistServicos.iconButton} />
                     <View>
                         <Text style={stylesFlatlistServicos.titleButton}>{item.title}</Text>
                         <Text style={stylesFlatlistServicos.descriptionButton}>Serviço oferecido por:</Text>
                         <Text style={stylesFlatlistServicos.providerButton}>{item.provider}</Text>
-                        <Text style={stylesFlatlistServicos.textPrice}>{item.preco}</Text>
+                        <Text style={stylesFlatlistServicos.textPrice}>{item.preco}</Text>                        
                     </View>
+                    <TouchableOpacity style={stylesMyProfile.buttonEdit}>
+                      <Entypo name="edit" style={stylesMyProfile.iconEdit}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={stylesMyProfile.buttonDelete}>
+                      <Entypo name="trash" style={stylesMyProfile.iconEdit}/>
+                    </TouchableOpacity>                     
             </TouchableOpacity>
         )
     }
@@ -262,46 +269,36 @@ const styles = StyleSheet.create({
         justifyContent:'space-around',
         
       },
+
+    
 });
 
+const stylesMyProfile = StyleSheet.create({
+        buttonEdit:{
+          backgroundColor:'#388fb8',
+          position:'absolute',
+          right:10,
+          bottom:10,
+          height:35,
+          width:35,
+          borderRadius:100,
+          justifyContent:'space-around',
+          alignItems:'center',
+        },
+        buttonDelete:{
+          backgroundColor:'#b8384e',
+          position:'absolute',
+          right:55,
+          bottom:10,
+          height:35,
+          width:35,
+          borderRadius:100,
+          justifyContent:'space-around',
+          alignItems:'center',
 
-const stylesFlatlistServicos = StyleSheet.create({
-    buttonTest:{
-        flex:1,
-        alignItems:'center',
-        width:'100%',
-        height:114,
-        backgroundColor:'#F0F0F5',
-        borderRadius:8,
-        marginRight: 10,
-        marginBottom: 10,
-        flexDirection:'row'
-    },
-    iconButton:{
-        width:'35%',
-        height:'100%',
-        borderRadius:8,
-        marginRight:17
-    },
-    titleButton:{
-      fontSize:15,
-      fontWeight:'bold'
-    },
-    descriptionButton:{
-        fontSize:10,
-        color:'#3D3D4D',
-        fontWeight:'bold'
-    },
-    providerButton:{
-        fontSize:10,
-        color:'#3D3D4D',
-    },
-    textPrice:{
-        marginTop:8,
-        fontSize:18,
-        color:'#39B100',
-    },
-    contentContainer: {
-        height:Dimensions.get('screen').height
-      }
-});
+        },
+        iconEdit:{
+          fontSize:18,
+          color:'white',          
+        }
+      });
