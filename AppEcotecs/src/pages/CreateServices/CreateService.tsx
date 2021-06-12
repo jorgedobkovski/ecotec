@@ -12,6 +12,10 @@ import {View,
 
 import * as ImagePicker from 'expo-image-picker';
 
+// import TextInputMask from 'react-native-text-input-mask';
+
+import {TextInputMask} from 'react-native-masked-text';
+
 import Input from '../../components/Input/Index';
 
 export default function CreateService({navigation}:any){
@@ -50,10 +54,21 @@ export default function CreateService({navigation}:any){
 
                     <Text style={styles.titulo}>Cadastro {'\n'} seu serviço</Text>
                     
-                    <Input placeholder="Nome" icon="mail" title='Nome' />
-                    <Input placeholder="Email" icon="mail" title='Email' />
-                    <Input placeholder="Senha" icon="lock" title='Confirmar Senha' secureTextEntry={true} /> 
-                    <Input placeholder="Confirmar Senha" icon="lock" title='Confirmar Senha' secureTextEntry={true} /> 
+                    <Input placeholder="Título do serviço" icon="type" title='titulo' />
+                    <Input placeholder="Descrição do serviço" icon="align-left" title='descricao' />
+                    <Input placeholder="Materiais utilizados" icon="list" title='materiais'/> 
+                    <Input placeholder="Valor" icon="dollar-sign" title='valor'/> 
+                    {/* <TextInputMask
+                        onChangeText={(formatted, extracted) => {
+                            console.log(formatted) // +1 (123) 456-78-90
+                            console.log(extracted) // 1234567890
+                        }}
+                        mask={"+1 ([000]) [000] [00] [00]"}
+                    /> */}
+                    <TextInputMask
+                        type={'money'}
+                        onChangeText={()=>{}}
+                    />
                     <TouchableOpacity style={styles.button} onPress={pickImage}>
                         <Text style={styles.textButton}>
                             Foto de perfil
