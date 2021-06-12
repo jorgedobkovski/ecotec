@@ -2,16 +2,18 @@ import React, { useState, useEffect, useCallback } from 'react';
 import {View,
     Text,
     Image,
-    StyleSheet,
-    Dimensions,
     SafeAreaView,
-    TextInput,
     TouchableOpacity,
-    ScrollView
+    ScrollView,
+    TextInput
 } from 'react-native';
 
-import * as ImagePicker from 'expo-image-picker';
+import {Feather} from '@expo/vector-icons';
 
+import DropDownPicker from 'react-native-dropdown-picker';
+
+import * as ImagePicker from 'expo-image-picker';
+import {styles, stylesInputMask} from './Styles';
 // import TextInputMask from 'react-native-text-input-mask';
 
 import {TextInputMask} from 'react-native-masked-text';
@@ -20,8 +22,30 @@ import Input from '../../components/Input/Index';
 
 export default function CreateService({navigation}:any){
     const [image, setImage] = useState("");
-    
+    const [texto, setTexto] = useState("00000");
 
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([
+        {label: 'Apple', value: 'apple'},
+        {label: 'Banana', value: 'banana'},
+        {label: 'CU', value: 'CU'},
+        {label: 'CU2', value: 'CU2'},
+        {label: 'CU3', value: 'CU3'}
+    ]);
+
+
+    const [isFocused, setIsFocused] = useState(false);
+
+     const handleInputFocus = useCallback(() => {
+        setIsFocused(true);
+    }, []);
+
+    const handleInputBlur = useCallback(() => {
+        setIsFocused(false);
+    }, []);
+
+    
     useEffect(()=>{
         (async () => {
             const {status} = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -31,6 +55,10 @@ export default function CreateService({navigation}:any){
             }
         })();
     },[])
+
+    const handleText = ({value}:any) =>{
+        setTexto(value)
+    }
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -65,15 +93,44 @@ export default function CreateService({navigation}:any){
                         }}
                         mask={"+1 ([000]) [000] [00] [00]"}
                     /> */}
-                    <TextInputMask
-                        type={'money'}
-                        onChangeText={()=>{}}
-                    />
+                    <View style={[stylesInputMask.container,isFocused ? stylesInputMask.borderContainerFocus : stylesInputMask.borderContainerBlur]}>
+                        <Feather style={stylesInputMask.icon} name='dollar-sign'  />
+                         <TextInputMask
+                            onFocus={handleInputFocus}
+                            onBlur={handleInputBlur}
+                            style={stylesInputMask.input}
+                            options={{
+                                precision: 2,
+                                separator: ',',
+                                delimiter: '.',
+                                unit: 'R$',
+                                suffixUnit: ''
+                            }}
+                            type={'money'}
+                            onChangeText={text => setTexto(text)}
+                            value={texto}
+                        /> 
+                    </View>
+
+                    <DropDownPicker
+                        open={open}
+                        value={value}
+                        items={items}
+                        setOpen={setOpen}
+                        setValue={setValue}
+                        setItems={setItems}
+                        multiple={true}
+                        min={0}
+                        max={5}
+                        placeholder="Selecione um item"
+                        />
+                    
                     <TouchableOpacity style={styles.button} onPress={pickImage}>
                         <Text style={styles.textButton}>
                             Foto de perfil
                         </Text>
                     </TouchableOpacity>
+
                     <View>
                         {image !== "" && <Image source={{ uri: image }} style={{ width: 200, height: 200 }}/>}
                     </View>
@@ -95,48 +152,3 @@ export default function CreateService({navigation}:any){
         </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:'center',
-        justifyContent:'space-around',
-        paddingHorizontal:10,
-        marginBottom:0,
-        marginTop:50,
-    },
-    image: {
-        height: Dimensions.get('window').width * 0.6,
-        margin:0
-    },
-    card:{
-        alignItems:'center',
-        marginTop:0,
-        height: 'auto',
-        width: 321,
-        borderRadius:13
-    },
-    titulo:{
-        fontSize:25,
-        color:'black',
-        marginBottom:25
-    },
-    button:{
-        backgroundColor: '#206A5D',
-        width: '90%',
-        height:50,
-        alignItems:'center',
-        borderRadius:5,
-        marginTop:15,
-        flex:1,
-        justifyContent:'center',
-        alignContent:'center'
-    },
-    textButton:{
-        color:'white',
-        fontSize:20
-    },
-    link:{
-        fontSize:20
-    }
-})

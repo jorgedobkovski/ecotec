@@ -13,12 +13,10 @@ export default function Input({title,icon,placeholder,...rest}:InputProps){
 
      const handleInputFocus = useCallback(() => {
         setIsFocused(true);
-        console.log("mudou focus ",isFocused)
     }, []);
 
     const handleInputBlur = useCallback(() => {
         setIsFocused(false);
-        console.log("mudou Blur ",isFocused)
     }, []);
     
     return (
@@ -45,6 +43,8 @@ export default function Input({title,icon,placeholder,...rest}:InputProps){
         </ View>
     )
 }
+
+
 const styles = StyleSheet.create({
     container:{
         width: '90%',
